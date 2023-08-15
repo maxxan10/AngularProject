@@ -10,6 +10,5 @@ export class AccountServiceService {
   constructor(private http: HttpClient) { }
   onLogin(obj: any) : Observable<any>{
     return this.http.post('http://localhost:5110/api/Login', obj);
-    
   }
 }

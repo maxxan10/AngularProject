@@ -11,7 +11,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserLoginComponent } from './user-login/user-login.component';
 
 
-const routes: Routes = [{ path: 'book-details', component: BookDetailsComponent}]
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +24,7 @@ const routes: Routes = [{ path: 'book-details', component: BookDetailsComponent}
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes) // ToastrModule added
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
