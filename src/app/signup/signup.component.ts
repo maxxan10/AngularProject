@@ -3,17 +3,17 @@ import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { UserStoreService } from '../services/user-store.service';
+
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.css'],
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: [ './signup.component.css'],
 })
 
-export class UserLoginComponent implements OnInit {
-  public loginForm!: FormGroup;
+export class SignupComponent implements OnInit {
+  public signUpForm!: FormGroup;
   type: string = 'password';
   isText: boolean = false;
   eyeIcon: string = 'fa-eye-slash';
@@ -22,14 +22,14 @@ export class UserLoginComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private toast: ToastrService,
-    private userStore: UserStoreService
 
    
   ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.signUpForm = this.fb.group({
       username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
@@ -53,28 +53,25 @@ export class UserLoginComponent implements OnInit {
 //
  // }
   onSubmit(){
-    if(this.loginForm.valid){
-      console.log(this.loginForm.value);
-      this.auth.signIn(this.loginForm.value).subscribe({
-        next: (res) => {
-          console.log(res.message);
-          this.loginForm.reset();
-          this.auth.storeToken(res.token);
-          let tokenPayload = this.auth.decodedToken();
-          this.userStore.setUserNameFromStore(tokenPayload.name);
-          this.userStore.setRoleFromStore(tokenPayload.role);
-          this.toast.success('Login Successful!')
-          this.router.navigate(['book-details-component'])
-        },
-        error:(err) => {
-          console.log(err.message);
-          this.toast.error('Incorrect Username or Password')
-          console.log(err);
-        },
-      });
- 
-      
-     
+
+    let signUpObj = {
+      ...this.signUpForm.value,
+      role:'',
+      token:''
     }
-  }
+      this.auth.signUp(signUpObj)
+      .subscribe({
+        next:(res=>{
+          console.log(res.message);
+          this.signUpForm.reset();
+          this.router.navigate(['user-login-component']);
+          this.toast.success('Registration Successful!')
+        }),
+        error:(err=>{
+          //this.toast.error('Something went wrong!')
+          alert(err.message);
+        })
+      })
+    }
+    
 }

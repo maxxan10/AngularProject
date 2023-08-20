@@ -1,24 +1,24 @@
 <form #form="ngForm" (submit)="onSubmit(form)"
 [class.submitted] = "service.formSubmitted" novalidate autocomplete="off">
     <input type="hidden" class="bookId" [value]="service.formData.bookId">
-    <div class="mb-3">
-        <label for="">Book Name</label>
+    <div class="mb-3 text-white">
+        <label for="" class="text-white">Book Name</label>
         <input class="form-control form-control-lg"
         placeholder="Name of the book"
         #bookName="ngModel" name="bookName"
         [(ngModel)]="service.formData.bookName"
         required minlength="1" maxlength="100">
     </div>
-    <div class="mb-3">
-        <label for="">Book Author</label>
-        <input class="form-control form-control-lg"
+    <div class="mb-3 ">
+        <label for="" class="text-white">Book Author</label>
+        <input class="form-control form-control-lg "
         placeholder="The Author"
         #bookAuthor="ngModel" name="bookAuthor"
         [(ngModel)]="service.formData.bookAuthor"
         required minlength="1" maxlength="100">
     </div>
     <div class="mb-3">
-        <label for="">Book Genre</label>
+        <label for="" class="text-white">Book Genre</label>
         <input class="form-control form-control-lg"
         placeholder="Genre of the book"
         #bookGenre="ngModel" name="bookGenre"
@@ -30,3 +30,6 @@
         <button class="btn btn-lg btn-success" type="submit">Submit</button>
     </div>
 </form>
+<router-outlet></router-outlet>
+
+<!-- fundersam design -->

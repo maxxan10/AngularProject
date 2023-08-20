@@ -1,0 +1,35 @@
+<!-- navbar -->
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<nav class="topnav">
+  <div class="container2">
+    <div class="">
+      <div class="logoComponent">Book-Store API</div>
+    </div>
+
+    <li class="menu" [class.is-open]="isMenuOpen">
+      <a href="#home">Home</a>
+      <ng-container *ngIf="role === 'Admin'">
+      <a routerLink="/book-details-component" routerLinkActive="active" ariaCurrentWhenActive="page">Add New Book</a>
+    </ng-container>
+      <a routerLink="/quotes" routerLinkActive="active" ariaCurrentWhenActive="page">My Quotes</a>
+      <a routerLink="/user-login-component" routerLinkActive="active" ariaCurrentWhenActive="page" *ngIf="loggedin == false">Login</a>
+      <a class="cursor" (click)="logout()" *ngIf="loggedin == true">Logout</a>
+      <a></a>
+    </li>
+    <li class="burger" (click)="toggleMenu()">
+      <i class="material-symbols-outlined" style="color: #ffffff;"> {{isMenuOpen ? "close" : "menu"}} </i>
+    </li>
+
+
+  </div>
+
+</nav>
+<router-outlet></router-outlet>
+
+
+<!--<div class="imgContainer">
+
+</div>
+
+-->

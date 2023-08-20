@@ -13,6 +13,7 @@ export class BookDetailService {
   list:BookDetail[] = []
   formData : BookDetail = new BookDetail()
   formSubmitted: boolean = false;
+  private userUrl: string = 'http://localhost:5110/api/User';
 
   constructor(private http: HttpClient) { }
 
@@ -40,5 +41,9 @@ export class BookDetailService {
     form.form.reset()
     this.formData = new BookDetail()
     this.formSubmitted = false;
+  }
+
+  getUsers(){
+    return this.http.get<any>(this.userUrl);
   }
 }

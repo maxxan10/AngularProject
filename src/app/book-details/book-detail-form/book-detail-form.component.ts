@@ -7,7 +7,7 @@ import { BookDetailService } from 'src/app/shared/book-detail.service';
 @Component({
   selector: 'app-book-detail-form',
   templateUrl: './book-detail-form.component.html',
-  styles: [
+  styleUrls: ['./book-detail-form.css'
   ]
 })
 export class BookDetailFormComponent {
