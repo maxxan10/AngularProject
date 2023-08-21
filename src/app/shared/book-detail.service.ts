@@ -13,7 +13,7 @@ export class BookDetailService {
   list:BookDetail[] = []
   formData : BookDetail = new BookDetail()
   formSubmitted: boolean = false;
-  private userUrl: string = 'http://localhost:5110/api/User';
+  private userUrl: string = 'https://maxbookapi.azurewebsites.net/api/User/';
 
   constructor(private http: HttpClient) { }
 

@@ -1,3 +1,3 @@
 export const environment = {
-    apiBaseUrl : 'http://localhost:5110/api'
+    apiBaseUrl : 'https://maxbookapi.azurewebsites.net/api'
 };
